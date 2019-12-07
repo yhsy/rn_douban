@@ -6,11 +6,9 @@ import {
   Platform, // 用来提供平台检测功能的
   TextInput, // 文本框组件
   Image, // 图片组件
+  Button, // 按钮组件
 } from 'react-native';
 
-// const instruction = Platform.select({
-//   o
-// })
 
 const { OS, Version } = Platform;
 
@@ -76,6 +74,15 @@ class MyHomePage extends Component {
               />
             </View>
 
+            <View style={styles.mBtns}>
+              {/* 原生按钮组件,title和onPress属性必填 */}
+              <Button
+                title="这是一个按钮"
+                color="#f00"
+                onPress={() => { console.warn('123') }}
+              ></Button>
+            </View>
+
           </View>
         </View>
       </View>
@@ -136,6 +143,15 @@ const styles = StyleSheet.create({
   mImgs: {
     margin: 20,
     alignItems: 'center'
+  },
+  mBtns: {
+    flexDirection: 'row',
+    alignItems: 'center'
+  },
+  btn1: {
+    width: '100%',
+    backgroundColor: '#f00',
+    height: 50,
   }
 })
 

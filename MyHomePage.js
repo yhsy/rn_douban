@@ -1,5 +1,17 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import {
+  View, // 布局组件,相当于Div
+  Text, // 文本节点,所有文本必须要放到这里
+  StyleSheet, // 样式相关的组件,专门用来创建样式
+  Platform, // 用来提供平台检测功能的
+  TextInput, // 文本框组件
+} from 'react-native';
+
+// const instruction = Platform.select({
+//   o
+// })
+
+const { OS, Version } = Platform;
 
 class MyHomePage extends Component {
   // constructor: 一般都要写出来(一般都要挂载数据)
@@ -14,9 +26,42 @@ class MyHomePage extends Component {
     // 2.如果想要实现布局,RN提供了 View的组件,来实现布局;
     // 3.RN提供了一系列基础的组件，来方便程序员的开发，如果想要使用这些组件,只需把组件从'react-native'中导入即可
     return (
-      <View style={styles.mHd}>
-        {/* 所有的文本,必须要用RN提供的Text组件包裹,否则报错  */}
-        <Text style={styles.title}>MyHomePage123</Text>
+      <View>
+        <View style={styles.mHd}>
+          {/* 所有的文本,必须要用RN提供的Text组件包裹,否则报错  */}
+          <Text style={styles.title}>MyHomePage123</Text>
+        </View>
+        <View style={styles.mBd}>
+          {/* 默认信息 */}
+          <View style={styles.sysInfo}>
+            <Text>{`os:${OS},version:${Version}`}</Text>
+          </View>
+
+          {/* 文本输入框 */}
+          <View style={styles.mForm}>
+            {/* 账号 */}
+            <View style={styles.mInput}>
+              <Text style={styles.label}>账号:</Text>
+              <TextInput
+                style={styles.input}
+                defaultValue=""
+                keyboardType="numeric"
+                placeholder="请输入账号"
+              ></TextInput>
+            </View>
+            {/* 密码 */}
+            <View style={styles.mInput}>
+              <Text style={styles.label}>密码:</Text>
+              <TextInput
+                style={styles.input}
+                defaultValue=""
+                keyboardType="numeric"
+                placeholder="请输入密码"
+                secureTextEntry={true}
+              ></TextInput>
+            </View>
+          </View>
+        </View>
       </View>
     );
   }
@@ -33,6 +78,44 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: '#fff',
     textAlign: 'center'
+  },
+  mBd: {
+
+  },
+  sysInfo: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    // height: 300,
+    height: 40,
+    lineHeight: 40,
+    fontSize: 30,
+    backgroundColor: '#ccc',
+  },
+  mForm: {
+    // flexDirection: 'row',
+    // justifyContent: 'flex-start',
+    // height: 40,
+    // padding: 10,
+    // backgroundColor: '#aaa',
+  },
+  mInput: {
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    // height: 40,
+    padding: 10,
+    backgroundColor: '#aaa',
+  },
+  label: {
+    marginRight: 10,
+    lineHeight: 30,
+  },
+  input: {
+    // width: '100%',
+    width: 300,
+    // height: 30,
+    // lineHeight: 30,
+    paddingHorizontal: 10,
+    backgroundColor: '#fff',
   }
 })
 

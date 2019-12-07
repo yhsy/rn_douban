@@ -5,6 +5,7 @@ import {
   StyleSheet, // 样式相关的组件,专门用来创建样式
   Platform, // 用来提供平台检测功能的
   TextInput, // 文本框组件
+  Image, // 图片组件
 } from 'react-native';
 
 // const instruction = Platform.select({
@@ -61,6 +62,21 @@ class MyHomePage extends Component {
               ></TextInput>
             </View>
           </View>
+
+          <View style={styles.mImgs}>
+            <View style={{ marginBottom: 10 }}>
+              {/* 引入本地图片 */}
+              <Image source={require('./imgs/avatar.jpg')} />
+            </View>
+            <View style={{ marginBottom: 10 }}>
+              {/* 引入网络图片:一定要设置宽高,不然不显示 */}
+              <Image
+                source={{ uri: 'https://rn-douban-1252835029.cos.ap-shanghai.myqcloud.com/avatar2.jpg' }}
+                style={{ width: 200, height: 200 }}
+              />
+            </View>
+
+          </View>
         </View>
       </View>
     );
@@ -116,6 +132,10 @@ const styles = StyleSheet.create({
     // lineHeight: 30,
     paddingHorizontal: 10,
     backgroundColor: '#fff',
+  },
+  mImgs: {
+    margin: 20,
+    alignItems: 'center'
   }
 })
 

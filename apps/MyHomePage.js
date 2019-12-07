@@ -7,6 +7,7 @@ import {
   TextInput, // 文本框组件
   Image, // 图片组件
   Button, // 按钮组件
+  ActivityIndicator, // Loading组件
 } from 'react-native';
 
 
@@ -30,6 +31,12 @@ class MyHomePage extends Component {
           {/* 所有的文本,必须要用RN提供的Text组件包裹,否则报错  */}
           <Text style={styles.title}>MyHomePage123</Text>
         </View>
+        {/* animating隐藏Loading,只是不可见,区域还在 */}
+        <ActivityIndicator
+          animating={true}
+          color="red"
+          size="large"
+        ></ActivityIndicator>
         <View style={styles.mBd}>
           {/* 默认信息 */}
           <View style={styles.sysInfo}>
